@@ -13,6 +13,15 @@ Source0: 	%{name}-%{version}.tar.gz
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
+This utility will process statistics from /proc/schedstat such that the
+busiest stats will bubble up to the top.  It can alternately be sorted by
+the largest stat, or by name.  Stats can be included or excluded based on
+reg-ex pattern matching.
+
+Authors
+--------------------------
+  Gregory Haskins <ghaskins@novell.com>
+
 
 %prep
 %setup -q
