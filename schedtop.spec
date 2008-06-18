@@ -11,6 +11,7 @@ Group: 		System/Kernel and hardware
 URL: 		ftp://ftp.novell.com/dev/ghaskins/schedtop.tar.gz
 Source0: 	%{name}-%{version}.tar.gz
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
+BuildRequires:	boost-devel ncurses-devel gcc-c++
 
 %description
 This utility will process statistics from /proc/schedstat such that the
