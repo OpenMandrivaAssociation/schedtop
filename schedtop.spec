@@ -1,6 +1,6 @@
 %define name	schedtop
 %define version	0.5
-%define release	%mkrel 2
+%define release	%mkrel 3
 
 Summary: 	Displays scheduler statistics
 Name: 		%{name}
