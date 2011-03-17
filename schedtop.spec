@@ -11,7 +11,7 @@ Group: 		System/Kernel and hardware
 URL: 		ftp://ftp.novell.com/dev/ghaskins/schedtop.tar.gz
 Source0: 	%{name}-%{version}.tar.gz
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:	boost-devel ncurses-devel gcc-c++
+BuildRequires:	boost-devel ncurses-devel
 
 %description
 This utility will process statistics from /proc/schedstat such that the
@@ -28,7 +28,7 @@ Authors
 %setup -q
 
 %build
-%make
+%make CFLAGS='%optflags -DBOOST_FILESYSTEM_VERSION=2 %ldflags'
 
 %install
 rm -rf $RPM_BUILD_ROOT
