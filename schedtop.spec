@@ -1,17 +1,17 @@
-%define name	schedtop
-%define version	1.0
-%define release	%mkrel 6
+%define	gitrev	68dee64
 
 Summary: 	Displays scheduler statistics
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
-License: 	GPL
+Name: 		schedtop
+Version: 	1.1
+Release: 	0.%{gitrev}.1
+License: 	GPLv2
 Group: 		System/Kernel and hardware
-URL: 		ftp://ftp.novell.com/dev/ghaskins/schedtop.tar.gz
-Source0: 	%{name}-%{version}.tar.gz
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:	boost-devel ncurses-devel
+URL: 		https://github.com/ghaskins/schedtop
+Source0: 	%{name}-%{gitrev}.tar.xz
+Patch0:		schedtop_linking.patch
+
+BuildRequires:	boost-devel
+BuildRequires:	ncurses-devel
 
 %description
 This utility will process statistics from /proc/schedstat such that the
@@ -19,25 +19,17 @@ busiest stats will bubble up to the top.  It can alternately be sorted by
 the largest stat, or by name.  Stats can be included or excluded based on
 reg-ex pattern matching.
 
-Authors
---------------------------
-  Gregory Haskins <ghaskins@novell.com>
-
-
 %prep
-%setup -q
+%setup -qn %{name}
+%apply_patches
 
 %build
-%make CFLAGS='%optflags -DBOOST_FILESYSTEM_VERSION=2 %ldflags'
+%setup_compile_flags
+%make CFLAGS='%optflags -DBOOST_FILESYSTEM_VERSION=2 %ldflags' 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall PREFIX=$RPM_BUILD_ROOT/usr
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%makeinstall_std PREFIX=%{buildroot}
 
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/%{name}
