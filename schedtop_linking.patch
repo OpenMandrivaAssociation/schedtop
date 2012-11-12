@@ -1,0 +1,10 @@
+--- schedtop/Makefile~	2012-06-11 15:16:01.283510621 +0000
++++ schedtop/Makefile	2012-06-11 15:22:47.552505617 +0000
+@@ -5,6 +5,7 @@
+ LIBRARIES += -lboost_regex
+ LIBRARIES += -lboost_program_options
+ LIBRARIES += -lboost_filesystem
++LIBRARIES += -lboost_system
+ LIBRARIES += -lncurses
+ PREFIX ?= /usr/local
+ NAME=schedtop
