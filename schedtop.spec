@@ -10,6 +10,7 @@ URL: 		https://github.com/ghaskins/schedtop
 Source0: 	%{name}-%{gitrev}.tar.xz
 Patch0:		schedtop_linking.patch
 
+BuildRequires:	make
 BuildRequires:	boost-devel
 BuildRequires:	ncurses-devel
 
